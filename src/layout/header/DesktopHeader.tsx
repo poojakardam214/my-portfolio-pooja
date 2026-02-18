@@ -32,12 +32,19 @@ const DesktopHeader = () => {
           <Link href="" className='text-gray-300'>About</Link>
         </li>
       </ul>
-      <button
-        type="button"
-        className="bg-gray-200 py-1 px-10  rounded-md text-gray-900 font-semibold flex items-center gap-2 hover:bg-gray-300 transition duration-300"
-      >
-      <BsArrowUpRight />  Resume
-      </button>
+     <a 
+  href="/poojakardam-resume.pdf" 
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  <button 
+    type="button"
+    className="bg-gray-200 py-1 px-10 rounded-md text-gray-900 font-semibold flex items-center gap-2 hover:bg-gray-300 transition duration-300"
+  >
+    <BsArrowUpRight /> Resume
+  </button>
+</a>
+
     </div>
   </div>
   )
