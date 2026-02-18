@@ -48,14 +48,7 @@ const WebsiteWork: React.FC = () => {
         "Engineered with **PHP, HTML & CSS**, this site introduces Alstone’s cutting-edge Aluminium Honeycomb Panel (AHP) line, reinforcing their position in the cladding industry.",
       link: "https://alstonealcomb.com/",
     },
-    {
-      id: 3,
-      image: FiveProject,
-      title: "Sepaktakraw World Cup 2025 – Global Sports Event",
-      description:
-        "Developed using **Next.js & Tailwind CSS**, this event platform features live match schedules, ticketing, and player profiles for an international sports audience.",
-      link: "https://sepak.gamesgms.com/",
-    },
+   
     {
       id: 3,
       image: sixProject,
@@ -72,14 +65,7 @@ const WebsiteWork: React.FC = () => {
         "Developed a corporate site for CCIL using **PHP, HTML, CSS & JavaScript**, showcasing their premium flooring solutions and nationwide operations.",
       link: "https://ekant.in/ccil",
     },
-    {
-      id: 6,
-      image: ThreProject,
-      title: "RRR Insolvency – Corporate Law Firm",
-      description:
-        "Created a professional legal services site using **WordPress & Elementor**, providing an accessible, informative hub for corporate insolvency and restructuring services.",
-      link: "https://www.rrrinsolvency.com/",
-    },
+   
   ];
 
   // Animate the sliding indicator when activeTab changes

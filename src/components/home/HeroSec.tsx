@@ -19,9 +19,7 @@ const HeroSec = () => {
               </span>
             </h1>
             <p className="text-lg text-gray-300 max-w-lg mb-8 font-open-sans">
-              Crafting intuitive experiences where every pixel matters and every
-              click feels right. Based in{" "}
-              <span className="text-sky-400 font-semibold">Ghaziabad</span>.
+    UI/UX Designer with 3+ years of experience crafting intuitive, user-centered digital experiences. Blending design creativity with front-end skills to build functional and visually compelling interfaces.
             </p>
 
             {/* Call-to-Action Buttons */}

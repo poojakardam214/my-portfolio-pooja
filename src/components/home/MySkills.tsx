@@ -48,7 +48,7 @@ const skillData: SkillCategory[] = [
     title: "Other",
     skills: [
       { name: "Git", icon: <FaGitAlt className="text-orange-400" /> },
-      { name: "REST APIs", icon: <FaHtml5 className="text-yellow-400" /> },
+      // { name: "REST APIs", icon: <FaHtml5 className="text-yellow-400" /> },
     ],
   },
 ];

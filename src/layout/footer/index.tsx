@@ -2,21 +2,22 @@
 
 import React from "react";
 import Image from "next/image";
-import { FaPhoneAlt, FaEnvelope } from "react-icons/fa";
+import { FaPhoneAlt, FaEnvelope, FaLocationArrow } from "react-icons/fa";
 import ContactVector from "../../assets/images/admin.jpg"; 
 import VertorImage from "../../assets/images/vector-profile.png"; // Adjust the path as necessary"
+import Link from "next/link";
 
 const Footer: React.FC = () => {
   return (
-    <section className="bg-gray-50 py-16 px-6 lg:px-16 relative">
-        <Image src={VertorImage} alt="vector" loading="lazy" className="absolute bottom-0 w-[20%] -left-12 drop-shadow-base" />
+    <section className="  py-16 px-6 lg:px-16 relative">
+        {/* <Image src={VertorImage} alt="vector" loading="lazy" className="absolute bottom-0 w-[20%] -left-12 drop-shadow-base" /> */}
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
         
        
-        <div className="flex flex-col items-start space-y-6 pl-8">
-            <h2 className="text-4xl font-bold text-gray-900">Hey there</h2>
+        <div className="flex flex-col items-start space-y-6 pl-8  ">
+            <h2 className="text-4xl font-bold text-white">Hey there</h2>
          
-          <p className="text-gray-600 text-lg">
+          <p className="text-white text-lg">
             Let’s start a conversation. Reach out via phone, email, or the form.
           </p>
 
@@ -24,12 +25,24 @@ const Footer: React.FC = () => {
           {/* Contact Details */}
           <div className="space-y-3">
             <div className="flex items-center gap-3">
-              <FaPhoneAlt className="text-blue-600 text-lg" />
-              <span className="text-gray-700 text-sm">+91 98765 43210</span>
+              <FaPhoneAlt className="text-white text-lg" />
+              <span className="text-white text-sm">
+                <Link href="tel:+919045458315">+91 90454 58315</Link>
+              </span>
             </div>
             <div className="flex items-center gap-3">
-              <FaEnvelope className="text-blue-600 text-lg" />
-              <span className="text-gray-700 text-sm">your@email.com</span>
+              <FaEnvelope className="text-white text-lg" />
+              <span className="text-white text-sm">  
+                <Link href="mailto:poojakardam214@gmail.com">poojakardam214@gmail.com</Link>
+              </span>
+
+              
+            </div>
+             <div className="flex items-center gap-3">
+              <FaLocationArrow className="text-white text-lg" />
+              <span className="text-white text-sm">  
+                <Link href="#">Pilkhuwa Ghazaibad 245304 UP</Link>
+              </span>
             </div>
           </div>
         </div>
