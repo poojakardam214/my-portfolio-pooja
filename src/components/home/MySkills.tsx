@@ -24,7 +24,7 @@ type SkillCategory = {
   skills: Skill[];
 };
 
-const skillData: SkillCategory[] = [
+const skillData: SkillCategory[] = [ 
   {
     title: "Design Tools",
     skills: [
@@ -58,90 +58,95 @@ const skillData: SkillCategory[] = [
 
 const MySkills: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
+  const headingRef = useRef<HTMLHeadingElement>(null);
   const cardRefs = useRef<HTMLDivElement[]>([]);
 
   useEffect(() => {
     if (!sectionRef.current) return;
 
-    gsap.fromTo(
-      sectionRef.current.querySelector("h2"),
-      { opacity: 0, y: 50 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 0.8,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top 80%",
-        },
-      }
-    );
+    const ctx = gsap.context(() => {
+      // Animate heading
+      gsap.fromTo(
+        headingRef.current,
+        { opacity: 0, y: 40 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top 85%",
+          },
+        }
+      );
 
-    gsap.fromTo(
-      cardRefs.current,
-      { opacity: 0, y: 80, scale: 0.95 },
-      {
-        opacity: 1,
-        y: 0,
-        scale: 1,
-        duration: 0.8,
-        stagger: 0.2,
-        ease: "back.out(1.7)",
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top 75%",
-        },
-      }
-    );
+      // Animate cards
+      gsap.fromTo(
+        cardRefs.current,
+        { opacity: 0, y: 60 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          stagger: 0.15,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top 80%",
+          },
+        }
+      );
+    }, sectionRef);
+
+    return () => ctx.revert();
   }, []);
 
   return (
     <section
       ref={sectionRef}
-      className="py-16 sm:py-20 lg:py-24 bg-gray-900 relative"
+      className="py-16 sm:py-20 lg:py-24 bg-gray-900 overflow-hidden"
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        
+
         {/* Heading */}
-        <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-12 sm:mb-16 text-white drop-shadow-lg">
+        <h2
+          ref={headingRef}
+          className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold 
+          text-center mb-12 sm:mb-16 text-white"
+        >
           My Skills
         </h2>
 
         {/* Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 perspective-[1000px]">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
           {skillData.map((category, index) => (
             <div
               key={index}
               ref={(el) => {
                 if (el) cardRefs.current[index] = el;
               }}
-              className="relative bg-gray-800/60 backdrop-blur-lg border border-gray-700/50 
-              rounded-2xl p-5 sm:p-6 shadow-xl 
-              transition-all duration-300 
-              hover:shadow-2xl 
-              lg:hover:-translate-y-2 
-              lg:hover:rotate-x-3 
-              lg:hover:rotate-y-3"
-              style={{ transformStyle: "preserve-3d" }}
+              className="bg-gray-800/70 backdrop-blur-md border border-gray-700 
+              rounded-2xl p-6
+              shadow-lg
+              transition-all duration-300
+              hover:shadow-2xl
+              hover:-translate-y-2"
             >
-              <div className="absolute inset-0 rounded-2xl border border-transparent bg-gradient-to-br from-purple-500/20 via-transparent to-cyan-500/20 pointer-events-none"></div>
-
-              <h3 className="text-lg sm:text-xl font-semibold mb-4 text-white drop-shadow-md">
+              <h3 className="text-lg sm:text-xl font-semibold mb-5 text-white">
                 {category.title}
               </h3>
 
-              <div className="space-y-3 sm:space-y-4">
+              <div className="space-y-4">
                 {category.skills.map((skill, idx) => (
                   <div
                     key={idx}
-                    className="flex items-center space-x-3 text-sm sm:text-base 
-                    hover:translate-x-1 transition-transform"
+                    className="flex items-center gap-3 text-sm sm:text-base"
                   >
-                    <span className="text-xl sm:text-2xl">
+                    <span className="text-xl sm:text-2xl flex-shrink-0">
                       {skill.icon}
                     </span>
-                    <span className="text-gray-300">
+                    <span className="text-gray-300 break-words">
                       {skill.name}
                     </span>
                   </div>
