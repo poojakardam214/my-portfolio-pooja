@@ -28,6 +28,7 @@ const WebsiteWork: React.FC = () => {
   const [activeTab, setActiveTab] = useState<
     "Website" | "Admin Panel" | "Mobile App"
   >("Website");
+
   const tabRefs = useRef<Record<string, HTMLButtonElement | null>>({});
   const indicatorRef = useRef<HTMLDivElement | null>(null);
 
@@ -48,7 +49,6 @@ const WebsiteWork: React.FC = () => {
         "Engineered with **PHP, HTML & CSS**, this site introduces Alstone’s cutting-edge Aluminium Honeycomb Panel (AHP) line, reinforcing their position in the cladding industry.",
       link: "https://alstonealcomb.com/",
     },
-   
     {
       id: 3,
       image: sixProject,
@@ -65,15 +65,14 @@ const WebsiteWork: React.FC = () => {
         "Developed a corporate site for CCIL using **PHP, HTML, CSS & JavaScript**, showcasing their premium flooring solutions and nationwide operations.",
       link: "https://ekant.in/ccil",
     },
-   
   ];
 
-  // Animate the sliding indicator when activeTab changes
   useEffect(() => {
     const activeButton = tabRefs.current[activeTab];
     if (activeButton && indicatorRef.current) {
       const buttonRect = activeButton.getBoundingClientRect();
-      const parentRect = activeButton.parentElement!.getBoundingClientRect();
+      const parentRect =
+        activeButton.parentElement!.getBoundingClientRect();
 
       gsap.to(indicatorRef.current, {
         x: buttonRect.left - parentRect.left,
@@ -86,139 +85,85 @@ const WebsiteWork: React.FC = () => {
 
   return (
     <section
-      className="py-20 bg-white rounded-4xl shadow-lg overflow-hidden"
       id="MyWork"
+      className="py-16 sm:py-20 lg:py-24 bg-white rounded-3xl shadow-lg overflow-hidden"
     >
-      <div className="container mx-auto">
-        <div className="text-center">
-          <h2 className="text-3xl font-bold text-center mb-10 title-stript-left-down text-white">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        
+        {/* Heading */}
+        <div className="text-center mb-10 sm:mb-14">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900">
             <span className="relative">My Works</span>
           </h2>
         </div>
 
-        {/* Static Tabs with GSAP indicator */}
-        <div className="relative flex justify-between mb-8 bg-gray-100 border border-gray-200 p-2 max-w-xl mx-auto rounded-full">
-          {/* Sliding indicator */}
+        {/* Tabs */}
+        <div className="relative flex flex-wrap sm:flex-nowrap justify-between gap-2 sm:gap-0 mb-10 bg-gray-100 border border-gray-200 p-2 max-w-xl mx-auto rounded-full overflow-x-auto">
+
           <div
             ref={indicatorRef}
             className="absolute top-2 bottom-2 bg-white border border-gray-300 shadow-md rounded-full"
             style={{ left: 0, width: 0 }}
           />
 
-          <button
-            ref={(el) => {
-              tabRefs.current["Website"] = el;
-            }}
-            onClick={() => setActiveTab("Website")}
-            className={`relative z-10 px-6 py-2 rounded-full font-semibold transition ${
-              activeTab === "Website"
-                ? "text-black"
-                : "text-gray-700 hover:text-black"
-            }`}
-          >
-            Website
-          </button>
-
-          <button
-            ref={(el) => {
-              tabRefs.current["Admin Panel"] = el;
-            }}
-            onClick={() => setActiveTab("Admin Panel")}
-            className={`relative z-10 px-6 py-2 rounded-full font-semibold transition ${
-              activeTab === "Admin Panel"
-                ? "text-black"
-                : "text-gray-700 hover:text-black"
-            }`}
-          >
-            Admin Panel
-          </button>
-
-          <button
-            ref={(el) => {
-              tabRefs.current["Mobile App"] = el;
-            }}
-            onClick={() => setActiveTab("Mobile App")}
-            className={`relative z-10 px-6 py-2 rounded-full font-semibold transition ${
-              activeTab === "Mobile App"
-                ? "text-black"
-                : "text-gray-700 hover:text-black"
-            }`}
-          >
-            Mobile App
-          </button>
+          {["Website", "Admin Panel", "Mobile App"].map((tab) => (
+            <button
+              key={tab}
+              ref={(el) => {
+                tabRefs.current[tab] = el;
+              }}
+              onClick={() =>
+                setActiveTab(tab as "Website" | "Admin Panel" | "Mobile App")
+              }
+              className={`relative z-10 px-4 sm:px-6 py-2 text-sm sm:text-base rounded-full font-semibold whitespace-nowrap transition ${
+                activeTab === tab
+                  ? "text-black"
+                  : "text-gray-700 hover:text-black"
+              }`}
+            >
+              {tab}
+            </button>
+          ))}
         </div>
 
-        {/* Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {activeTab === "Website" &&
-            websiteProjects.map((project) => (
+        {/* Website Grid */}
+        {activeTab === "Website" && (
+          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-2 gap-6 sm:gap-8">
+            {websiteProjects.map((project) => (
               <VerticleProjectCard key={project.id} {...project} />
             ))}
-        </div>
+          </div>
+        )}
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {activeTab === "Admin Panel" && (
-            <>
-              <Link href="">
+        {/* Admin Panel Grid */}
+        {activeTab === "Admin Panel" && (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+            {[1, 2, 3].map((_, i) => (
+              <Link key={i} href="">
                 <Image
                   src={osheImage}
                   alt="oshepro"
-                  className="rounded-lg w-full"
+                  className="rounded-lg w-full h-auto"
                 />
               </Link>
-              <Link href="">
-                <Image
-                  src={osheImage}
-                  alt="oshepro"
-                  className="rounded-lg w-full"
-                />
-              </Link>
-              <Link href="">
-                <Image
-                  src={osheImage}
-                  alt="oshepro"
-                  className="rounded-lg w-full"
-                />
-              </Link>
-            </>
-          )}
-        </div>
+            ))}
+          </div>
+        )}
 
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          {activeTab === "Mobile App" && (
-            <>
-              <Link href="">
+        {/* Mobile App Grid */}
+        {activeTab === "Mobile App" && (
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 sm:gap-8">
+            {[HeartApp, HondaApp, KhoApp, KhoApp].map((img, i) => (
+              <Link key={i} href="">
                 <Image
-                  src={HeartApp}
+                  src={img}
                   alt="oshepro"
-                  className="rounded-lg w-full"
+                  className="rounded-lg w-full h-auto"
                 />
               </Link>
-              <Link href="">
-                <Image
-                  src={HondaApp}
-                  alt="oshepro"
-                  className="rounded-lg w-full"
-                />
-              </Link>
-              <Link href="">
-                <Image
-                  src={KhoApp}
-                  alt="oshepro"
-                  className="rounded-lg w-full"
-                />
-              </Link>
-
-              <Link href="">
-                <Image
-                  src={KhoApp}
-                  alt="oshepro"
-                  className="rounded-lg w-full"
-                />
-              </Link>
-            </>
-          )}
-        </div>
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );

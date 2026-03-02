@@ -1,6 +1,7 @@
 import React from "react";
 import Profile from "@/assets/images/profile.png";
 import TestimonialCard from "../Cards/TestimonialCard";
+
 const TestinonialData = [
   {
     id: 1,
@@ -12,7 +13,6 @@ const TestinonialData = [
   },
   {
     id: 2,
-
     name: "Jane Smith",
     testimonial:
       "Amazing experience! The team was professional and delivered on time.",
@@ -28,20 +28,26 @@ const TestinonialData = [
     designation: "UX Designer at Creative Minds",
   },
 ];
+
 const TestimonialCarousel = () => {
   return (
-    <section className="py-[80px] bg-white">
-      <div className="container mx-auto">
-       <div className="text-center">
-         <h2 className="text-4xl font-bold text-center mb-12 title-stript-right-down text-white ">
-          <span className="relative">Testimonials</span>
-        </h2>
-       </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {TestinonialData.map((testimonial, index) => (
-            <TestimonialCard key={index} {...testimonial} />
+    <section className="py-16 sm:py-20 lg:py-24 bg-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        {/* Heading */}
+        <div className="text-center mb-12 sm:mb-16">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900">
+            <span className="relative">Testimonials</span>
+          </h2>
+        </div>
+
+        {/* Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+          {TestinonialData.map((testimonial) => (
+            <TestimonialCard key={testimonial.id} {...testimonial} />
           ))}
         </div>
+
       </div>
     </section>
   );

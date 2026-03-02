@@ -4,7 +4,13 @@ import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { FaFigma, FaHtml5, FaCss3Alt, FaReact, FaGitAlt } from "react-icons/fa";
-import { SiCanva, SiTailwindcss, SiNextdotjs, SiGreensock, SiFramer,  } from "react-icons/si";
+import {
+  SiCanva,
+  SiTailwindcss,
+  SiNextdotjs,
+  SiGreensock,
+  SiFramer,
+} from "react-icons/si";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -46,10 +52,7 @@ const skillData: SkillCategory[] = [
   },
   {
     title: "Other",
-    skills: [
-      { name: "Git", icon: <FaGitAlt className="text-orange-400" /> },
-      // { name: "REST APIs", icon: <FaHtml5 className="text-yellow-400" /> },
-    ],
+    skills: [{ name: "Git", icon: <FaGitAlt className="text-orange-400" /> }],
   },
 ];
 
@@ -60,7 +63,6 @@ const MySkills: React.FC = () => {
   useEffect(() => {
     if (!sectionRef.current) return;
 
-    // Title animation
     gsap.fromTo(
       sectionRef.current.querySelector("h2"),
       { opacity: 0, y: 50 },
@@ -76,10 +78,9 @@ const MySkills: React.FC = () => {
       }
     );
 
-    // Cards animation
     gsap.fromTo(
       cardRefs.current,
-      { opacity: 0, y: 80, scale: 0.9 },
+      { opacity: 0, y: 80, scale: 0.95 },
       {
         opacity: 1,
         y: 0,
@@ -96,43 +97,60 @@ const MySkills: React.FC = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} className="py-16 bg-gray-900 relative">
-      <div className="container mx-auto px-6">
-        <h2 className="text-4xl font-bold text-center mb-12 text-white drop-shadow-lg">
+    <section
+      ref={sectionRef}
+      className="py-16 sm:py-20 lg:py-24 bg-gray-900 relative"
+    >
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        
+        {/* Heading */}
+        <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-12 sm:mb-16 text-white drop-shadow-lg">
           My Skills
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 perspective-[1000px]">
+
+        {/* Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 perspective-[1000px]">
           {skillData.map((category, index) => (
             <div
               key={index}
               ref={(el) => {
                 if (el) cardRefs.current[index] = el;
               }}
-              className="relative bg-gray-800/60 backdrop-blur-lg border border-gray-700/50 rounded-2xl p-6 shadow-xl 
-                        hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 hover:rotate-x-3 hover:rotate-y-3"
-              style={{
-                transformStyle: "preserve-3d",
-              }}
+              className="relative bg-gray-800/60 backdrop-blur-lg border border-gray-700/50 
+              rounded-2xl p-5 sm:p-6 shadow-xl 
+              transition-all duration-300 
+              hover:shadow-2xl 
+              lg:hover:-translate-y-2 
+              lg:hover:rotate-x-3 
+              lg:hover:rotate-y-3"
+              style={{ transformStyle: "preserve-3d" }}
             >
               <div className="absolute inset-0 rounded-2xl border border-transparent bg-gradient-to-br from-purple-500/20 via-transparent to-cyan-500/20 pointer-events-none"></div>
 
-              <h3 className="text-xl font-semibold mb-4 text-white drop-shadow-md">
+              <h3 className="text-lg sm:text-xl font-semibold mb-4 text-white drop-shadow-md">
                 {category.title}
               </h3>
-              <div className="space-y-4">
+
+              <div className="space-y-3 sm:space-y-4">
                 {category.skills.map((skill, idx) => (
                   <div
                     key={idx}
-                    className="flex items-center space-x-3 hover:translate-x-1 transition-transform"
+                    className="flex items-center space-x-3 text-sm sm:text-base 
+                    hover:translate-x-1 transition-transform"
                   >
-                    <span className="text-2xl">{skill.icon}</span>
-                    <span className="text-gray-300">{skill.name}</span>
+                    <span className="text-xl sm:text-2xl">
+                      {skill.icon}
+                    </span>
+                    <span className="text-gray-300">
+                      {skill.name}
+                    </span>
                   </div>
                 ))}
               </div>
             </div>
           ))}
         </div>
+
       </div>
     </section>
   );
