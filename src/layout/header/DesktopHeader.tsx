@@ -55,7 +55,7 @@ const DesktopHeader = () => {
         {/* Resume Button - Desktop */}
         <div className="hidden md:block">
           <a
-            href="/poojakardam-resume.pdf"
+            href="/pooja-kardam-ui-ux-web-designer-resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -89,7 +89,7 @@ const DesktopHeader = () => {
           </Link>
 
           <a
-            href="/poojakardam-resume.pdf"
+            href="/pooja-kardam-ui-ux-web-designer-resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
           >

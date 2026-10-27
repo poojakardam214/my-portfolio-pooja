@@ -39,7 +39,7 @@ const HeroSec = () => {
 
             {/* Intro Subtitle */}
             <p className="text-gray-300 text-base md:text-lg max-w-2xl mx-auto lg:mx-0 leading-relaxed font-normal">
-              Hi, I&apos;m <span className="text-white font-semibold">Pooja Kardam</span> — a UI/UX Designer with <span className="text-sky-400 font-medium">3+ years of experience</span> crafting intuitive, user-centered digital products. I blend creative visual design with front-end thinking.
+              Hi, I&apos;m <span className="text-white font-semibold">Pooja Kardam</span> — a UI/UX Designer with <span className="text-sky-400 font-medium">4.5 of experience</span> crafting intuitive, user-centered digital products. I blend creative visual design with front-end thinking.
             </p>
 
             {/* Call to Action Buttons */}
@@ -80,11 +80,11 @@ const HeroSec = () => {
               {/* Floating Badge 1: Experience */}
               <div className="absolute -bottom-2 -left-4 sm:left-0 bg-slate-900/80 border border-white/10 backdrop-blur-xl px-4 py-2.5 rounded-2xl shadow-xl flex items-center gap-3">
                 <div className="w-9 h-9 rounded-xl bg-sky-500/20 border border-sky-400/30 flex items-center justify-center text-sky-400 font-bold text-sm">
-                  3+
+                  4+
                 </div>
                 <div className="text-left">
                   <p className="text-xs text-gray-400">Experience</p>
-                  <p className="text-sm font-semibold text-white">3+ Years</p>
+                  <p className="text-sm font-semibold text-white">4.5 Years</p>
                 </div>
               </div>
 
